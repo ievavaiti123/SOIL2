@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Three.js sketch</title>
+
+        <!-- just follow the link in a web browser to copy the code into a local javascript file -->
+        <script async src="./libs/three.js"></script>
+        <script type="importmap">
+        {
+            "imports": {
+            "three": "https://unpkg.com/three@0.150.1/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.150.1/examples/jsm/"
+            }
+           
+        }
+        </script>
+        
+               <script type="module" async src="/node_modules/tone/build/Tone.js"></script>
+        <!-- <script type="text/javascript" src="https://tonejs.github.io/build/Tone.js"></script> -->
+       
+
+      
+        <script type="module" src="sketch.js"></script>
+        
+        <link rel="stylesheet" href="style.css">
+        
+	</head>
+	<body>
+        <div id="sketch-container"></div>
+
+        <div class="popup" id="popup">
+            <div class="content1">
+                
+                <h1>USER GUIDE:</h1>
+                <h3>Desktop Users:</h3>
+                <p>Rotate with mouse drag, Zoom with scroll <br>
+                Hover with mouse to examine particles<br>
+                Click on particle to hold</p>
+                <h3>Tablet/Phone Users</h3>
+                <p>Drag to rotate, Pinch to zoom<br>
+                Tap on particle to view properties</p>
+                <button type="button" class="btn" onclick="closePopup()">Close</button>
+            </div>
+        </div>
+        <script>let popup = document.getElementById("popup");
+
+            function openPopup() {
+                popup.classList.add("open-popup");
+            }
+            function closePopup() {
+                popup.classList.remove("open-popup");
+            }</script>
+        
+        <div class="container" id="container">
+            <div class="tooltip show" >
+                <button type="submit" class="btn" onclick="openPopup()">Show User Guide</button>
+                
+
+            </div>
+
+            <div class="slidecontainer">
+                <p >
+            
+                    Toggle the slider to change year
+                
+                </p>
+            <input type="range" min="0" max="100" value="100" class="slider" id="sliderYear">
+            <p>Year: <span id="yearVal"></span></p>
+            <p>Location: Blackheath</p>
+          </div>
+          
+            <h2 id="name" class="important"></h2>
+            <!-- <p id="type"></p> -->
+           
+            <p id="info"></p>
+
+
+        
+
+    
+          
+        </div>
+        
+	</body>
+</html>

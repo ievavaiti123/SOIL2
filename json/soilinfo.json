@@ -1,0 +1,58 @@
+{
+    "contents": [
+        
+            {
+                "type": "Invertebrates",
+                "amount07": "64.6",
+                "amount98": "45.7",
+                "info": "Soil invertebrates perform a wide range of functions that contribute to ecosystem health, through the maintenance of nutrient cycling, water storage and primary productivity. Soil invertebrates directly or indirectly affect organic matter decomposition, the maintenance of soil structure, and can exert direct influence on plant communities through selectively feeding on roots, leaves or seeds. The structures they create in deep soil matter provide oxygen to microbes below ground, which prevents pests and diversifies nutrient colonies. Soil invertebrates include Annelids, Anthropods, Spiders, Springtails, Ants and many more.",
+                "color": "rgb(50, 150, 10)",
+                "types":
+                [
+                    {
+                        "species": "Broad Taxa",
+                        
+                        "amount": "3.87"
+                    }
+                ]
+            },
+        
+        {
+            "type": "Carbon Concentration",
+            "amount07": "59.18",
+            "amount98": "60.02",
+            "info": "Carbon is a culmination of broken down matter from the plants and animals that live in the soil, that has been brought in from the Earth's atmosphere whilst they were still alive. Soils can store carbon for a very long time, helping clean up the Earth's atmosphere and prevent this carbon from being released as CO2. By disturbing the soil ecosystem for human interventions such as cultivation or deforestation, the carbon is lost from the soil which negatively impacts the climate. The soil also becomes degraded and unable to provide nutrients supporting plant growth and biodiversity.",
+            "color": "rgb(0, 100, 150)"
+            
+        },
+
+        {
+            "type": "Olsen-P",
+            "amount07": "35.21",
+            "amount98": "43.66",
+            "info": "Phosphorus is the second most important crop nutrient after Nitrogen. It is an essential macronutrient that plays an important role in all crop biochemical processes such as photosynthesis, respiration, energy storage, transfer, cell division, cell enlargement and nitrogen fixation. It is also important in seed germination, seedling establishment, root, shoot, flower and seed development.",
+            "color": "rgb(200, 100, 0)"
+            
+        },
+
+        {
+            "type": "Nitrogen",
+            "amount07": "0.45",
+            "amount98": "0.47",
+            "info": "Soil nitrogen transformations underpin plant growth and are fundamental to healthy ecosystem functioning. Excess nitrogen applications, particularly in the form of high fertilizer inputs, adversely affect soil health and cause substantial nitrous oxide and ammonia emissions, contributing to climate change and atmospheric pollution.",
+            "color": "rgb(200, 80, 100)"
+            
+        },
+
+        {
+            "type": "Moisture",
+            "amount07": "33.72",
+            "amount98": "32.11",
+            "info": "Soil moisture is defined by AMS as: 'The total amount of water, including the water vapour, in an unsaturated soil.' Soil moisture plays an important role in agricultural monitoring, drought and flood forecasting, forest fire prediction, water supply management, and other natural resource activities. Water affects soil formation, structure, stability and erosion but is of primary concern with respect to plant growth.At deeper levels, moisture re-deposits and dissolves organic material in a process called leaching.",
+            "color": "rgb(0, 80, 250)"
+            
+        }
+
+    ]
+
+}
