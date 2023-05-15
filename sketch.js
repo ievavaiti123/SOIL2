@@ -65,7 +65,9 @@ document.getElementById("sketch-container").appendChild( renderer.domElement );
 const listener = new THREE.AudioListener();
 camera.add( listener );
 
-document.querySelector('button')?.addEventListener('click', async () => {
+
+
+document.getElementById('sound')?.addEventListener('click', async () => {
 	await Tone.start()
 	console.log('audio is ready')
 })
@@ -114,9 +116,9 @@ function init() {
 
 
 // fix exposure and lighting of the HDR texture image
-renderer.outputEncoding = THREE.sRGBEncoding;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 0.6;
+renderer.toneMappingExposure = 1.5;
 
 // load HDR texture image, sourced from https://www.hdri-hub.com/hdrishop/freesamples/freehdri/item/117-hdr-041-path-free
 const loader = new RGBELoader();
