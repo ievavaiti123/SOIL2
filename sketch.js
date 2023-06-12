@@ -118,11 +118,11 @@ function init() {
 // fix exposure and lighting of the HDR texture image
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1.5;
+renderer.toneMappingExposure = 1.9;
 
 // load HDR texture image, sourced from https://www.hdri-hub.com/hdrishop/freesamples/freehdri/item/117-hdr-041-path-free
 const loader = new RGBELoader();
-loader.load('imgs/HDR_041_Path_Ref.hdr', function(texture){
+loader.load('imgs/HDR_041_Path.hdr', function(texture){
     texture.mapping = THREE.EquirectangularReflectionMapping;
     scene.background = texture;
     scene.environment = texture;
