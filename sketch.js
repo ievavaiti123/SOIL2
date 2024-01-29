@@ -1,30 +1,26 @@
+//import 3d libraries
 import * as THREE from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls';
 import {RGBELoader} from 'three/addons/loaders/RGBELoader.js';
-// import * as Tone from 'tone';
-// import * as Tone from 'tone';
+
 
 //data sourced from : Henrys, P.A.; Keith, A.M.; Robinson, D.A.; Emmett, B.A. (2012). Model estimates of topsoil invertebrates [Countryside Survey] NERC Environmental Information Data Centre. https://doi.org/10.5285/f19de821-a436-4b28-95f6-b7287ef0bf15
 
-
+//initialise graphics variables
 let light;
-let material1, material2, material3, material4;
+let material1, material2;
 let isOn = false;
-let yearDisp;
 
-let pRate = [];
-let sound2;
-let sounds2 = [];
-let players = [];
+//UI display text
+let yearDisp;
 let sName = [];
 
+//data variables
 let  type, info,  c;
-
 let soil;
-let sphere;
 
-let collision;
-let a;
+//3d particles
+let sphere;
 let objects = [];
 
 // arrays of xyz coordinates
@@ -36,7 +32,7 @@ let z = [];
 let materials = [];
 let materials2 = [];
 
-// let checkM = isMobile();
+// is device mobile for adapting to devices
 let checkT = isMobileTablet();
 
 
@@ -54,6 +50,7 @@ camera.position.set(-40, 10, -40);
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x87ceeb);
 
+//run the initialise function
 init();
 
 //render and add to the canvas
@@ -66,7 +63,7 @@ const listener = new THREE.AudioListener();
 camera.add( listener );
 
 
-
+//add permissions to start sound incase of browser issues
 document.getElementById('sound')?.addEventListener('click', async () => {
 	await Tone.start()
 	console.log('audio is ready')
@@ -76,7 +73,6 @@ document.getElementById('sound')?.addEventListener('click', async () => {
 let slider = document.getElementById("sliderYear");
 let output = slider.value
 let year = document.getElementById("yearVal");
-
 yearDisp = Math.round(convertRange(output, [0, 100], [1998, 2007]));
 year.innerHTML = yearDisp;
 let yearseven = convertRange(output, [0, 100], [0, 0.7]);
@@ -84,7 +80,6 @@ let year98 = convertRange(output, [0, 100], [0.7, 0]);
 
 // html variables
 const h = document.getElementById('name');
-// const p2 = document.getElementById('type');
 const p = document.getElementById('info');
 
 
@@ -122,7 +117,7 @@ renderer.toneMappingExposure = 1.9;
 
 // load HDR texture image, sourced from https://www.hdri-hub.com/hdrishop/freesamples/freehdri/item/117-hdr-041-path-free
 const loader = new RGBELoader();
-loader.load('imgs/HDR_041_Path.hdr', function(texture){
+loader.load('imgs/HDR_041_Path_Ref.hdr', function(texture){
     texture.mapping = THREE.EquirectangularReflectionMapping;
     scene.background = texture;
     scene.environment = texture;
@@ -150,6 +145,7 @@ function onMouseMove(event) {
 }
 
 function onHover() {
+    //change colour if mouse hovers over object
     raycaster.setFromCamera(pointer, camera);
     const intersects = raycaster.intersectObjects(scene.children);
     
@@ -157,7 +153,7 @@ function onHover() {
     if (intersects.length > 0) {
 
         if (isOn == false) {
-        for (a = 0; a < intersects.length; a++) {
+        for (let a = 0; a < intersects.length; a++) {
  
         //check if mouse intersects with object
         objects.push(intersects[a].object)
@@ -261,17 +257,16 @@ function onClick() {
 }
 
 let sounds1 = [];
+
 function drawSoil() {
-    
-collision = false;
+//soil drawing function
+//years:
 let value98;
 let value07;
 const geometry = new THREE.SphereGeometry(0.5, 64, 64);
 
-
-
-
     for (let i=0; i<soil.length; i++) {
+        //loop through the data set and add these values to the variables
         value07 = soil[i].amount07;
         value98 = soil[i].amount98;
         
@@ -279,6 +274,7 @@ const geometry = new THREE.SphereGeometry(0.5, 64, 64);
         info = soil[i].info;
         c = soil[i].color;
 
+        //3d materials
         material1 = new THREE.MeshPhysicalMaterial( { 
             roughness: 0.1,
             metalness: 0.3,
@@ -294,16 +290,14 @@ const geometry = new THREE.SphereGeometry(0.5, 64, 64);
             opacity: year98,
             color: c } );
 
+            //add materials to array
             materials.push(material1)
             materials2.push(material2)
            
-       
-            pRate[i] = getRnd(80, 100) /100;
-            //set positional audio
-
+            //set the sound names
             sName[i] = "sound/s" + i + ".ogg"
 
-            
+            //control sound positions here
             let sound1 = new THREE.PositionalAudio( listener );
             Tone.setContext(sound1.context);
             let player = new Tone.Player
@@ -314,10 +308,7 @@ const geometry = new THREE.SphereGeometry(0.5, 64, 64);
                     // playbackRate: pRate[i],
                     
             });
-            // const filter = new Tone.Filter(200, 'lowpass');
-            // sound1.setFilter(filter)
-
-
+            
             sound1.setNodeSource(player);
             
             sound1.setRefDistance( 3 );
@@ -346,9 +337,6 @@ const geometry = new THREE.SphereGeometry(0.5, 64, 64);
                 sphere.userData.nutrient = true;
                 sphere.userData.name = type; 
                 sphere.userData.info = info; 
-
-                
-               
                
             }
 
